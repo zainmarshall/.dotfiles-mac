@@ -43,9 +43,4 @@ _TESTS
 COMMIT_MESSAGE
 _COMMIT_MESSAGE
 
-.config/*
-!.config/nvim/**
-!.config/kity/**
-!.config/karabiner/**
-!.config/flutter/**
-!.config/raycast/**
+.config/aegish.json
