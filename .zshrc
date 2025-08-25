@@ -6,6 +6,8 @@ alias cdd="cd ~/developer"
 alias vim="nvim"
 alias g++="g++-15"
 alias killport='f(){ lsof -ti :$1 | xargs -r kill -9; }; f'
+# Use z instead of cd, but don't ruin muscle memory
+alias cd='z'
 
 
 kittytheme() {
@@ -66,3 +68,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+eval "$(zoxide init zsh)"
+
