@@ -8,6 +8,7 @@ alias g++="g++-15"
 alias killport='f(){ lsof -ti :$1 | xargs -r kill -9; }; f'
 # Use z instead of cd, but don't ruin muscle memory
 alias cd='z'
+alias ssh="kitty +kitten ssh"
 
 
 kittytheme() {
@@ -21,17 +22,17 @@ kittytheme() {
 bandit() {
     ssh "bandit$1@bandit.labs.overthewire.org" -p 2220
 }
-  echo "\033[3m\e[32mThree Rings for the Elven-kings under the sky,
-Seven for the Dwarf-lords in their halls of stone,
-Nine for Mortal Men doomed to die,
-One for the Dark Lord on his dark throne
-In the Land of Mordor where the Shadows lie.
- One Ring to rule them all, One Ring to find them,
- One Ring to bring them all, and in the darkness bind them
-In the Land of Mordor where the Shadows lie.\033[0m"
+#   echo "\033[3m\e[32mThree Rings for the Elven-kings under the sky,
+# Seven for the Dwarf-lords in their halls of stone,
+# Nine for Mortal Men doomed to die,
+# One for the Dark Lord on his dark throne
+# In the Land of Mordor where the Shadows lie.
+#  One Ring to rule them all, One Ring to find them,
+#  One Ring to bring them all, and in the darkness bind them
+# In the Land of Mordor where the Shadows lie.\033[0m"
 
-  echo "\033[3m\e[33mI must not fear. Fear is the mind-killer. Fear is the little-death that brings total obliteration. I will face my fear.\033[0m"
-#programs to run at start 
+#  echo "\033[3m\e[33mI must not fear. Fear is the mind-killer. Fear is the little-death that brings total obliteration. I will face my fear.\033[0m"
+# #programs to run at start 
 
 
 #Stuff I no longer understand. 
@@ -71,3 +72,16 @@ export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(zoxide init zsh)"
 
+
+# Turso
+export PATH="$PATH:/Users/zain/.turso"
+export PATH=$HOME/.local/bin:$PATH
+export MANPATH=$HOME/.local/man:$MANPATH
+docxtopdf() {
+  local dir="${1:-.}"
+  find "$dir" -type f -name '*.docx' -print0 | while IFS= read -r -d '' f; do
+    local outdir
+    outdir="$(dirname "$f")"
+    soffice --headless --convert-to pdf --outdir "$outdir" "$f"
+  done
+}
