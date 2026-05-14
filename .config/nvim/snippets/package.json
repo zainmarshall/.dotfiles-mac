@@ -1,0 +1,9 @@
+{
+  "name": "zain-snippets",
+  "contributes": {
+    "snippets": [
+      { "language": "cpp", "path": "./cpp.json" },
+      { "language": "java", "path": "./java.json" }
+    ]
+  }
+}
